@@ -105,11 +105,37 @@ const data = [
 */
 const articlesDivContainer = document.querySelector('.articles');
 
-const articleTitle = document.createElement('h2');
-
+let articleTitle = document.createElement('h2');
 articleTitle.textContent = data[0].title; // this is how ot append text
 
-console.log(articleTitle);
+let paragraph1 = document.createElement('p');
+paragraph1.textContent = data[0].firstParagraph;
+
+let paragraph2 = document.createElement('p');
+paragraph2.textContent = data[1].secondParagraph;
+
+let paragraph3 = document.createElement('p');
+paragraph3.textContent = data[2].thirdParagraph;
+
+
+let spann = document.createElement('span');
+spann.textContent = "+";
+spann.classList.add('expandButton');
+
+articlesDivContainer.appendChild(articleTitle);
+articlesDivContainer.appendChild(paragraph1);
+articlesDivContainer.appendChild(paragraph2);
+articlesDivContainer.appendChild(paragraph3);
+
+articlesDivContainer.appendChild(spann);
+
+
+
+
+
+
+
+
 
 
 
