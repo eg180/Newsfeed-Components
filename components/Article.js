@@ -121,14 +121,15 @@ function articleMaker (articleData) {
     articlesDivContainer.classList.add('article')
 
     let articleTitle = document.createElement('h2');
-    // put date code here and add the class
+    let articleDate = document.createElement('p');
+    articleDate.classList.add('date');
     let paragraph1 = document.createElement('p');
     let paragraph2 = document.createElement('p');
     let paragraph3 = document.createElement('p');
     let spann = document.createElement('span');
 
     articleTitle.textContent = articleData[indx].title; 
-    // add text content to date
+    articleDate.textContent = articleData[indx].date;
     paragraph1.textContent = articleData[indx].firstParagraph;
     paragraph2.textContent = articleData[indx].secondParagraph
     paragraph3.textContent = articleData[indx].thirdParagraph;
@@ -136,7 +137,7 @@ function articleMaker (articleData) {
     spann.classList.add('expandButton');
 
     articlesDivContainer.appendChild(articleTitle);
-    // append date
+    articlesDivContainer.appendChild(articleDate);
     articlesDivContainer.appendChild(paragraph1);
     articlesDivContainer.appendChild(paragraph2);
     articlesDivContainer.appendChild(paragraph3);
