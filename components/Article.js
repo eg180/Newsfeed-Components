@@ -89,6 +89,8 @@ const data = [
   }
 ];
 
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -103,60 +105,61 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 */
-const articlesDivContainer = document.querySelector('.articles');
 
-let articleTitle = document.createElement('h2');
-articleTitle.textContent = data[0].title; // this is how ot append text
-
-let paragraph1 = document.createElement('p');
-paragraph1.textContent = data[0].firstParagraph;
-
-let paragraph2 = document.createElement('p');
-paragraph2.textContent = data[1].secondParagraph;
-
-let paragraph3 = document.createElement('p');
-paragraph3.textContent = data[2].thirdParagraph;
+function articleMaker (articleData) {
 
 
-let spann = document.createElement('span');
-spann.textContent = "+";
-spann.classList.add('expandButton');
-
-articlesDivContainer.appendChild(articleTitle);
-articlesDivContainer.appendChild(paragraph1);
-articlesDivContainer.appendChild(paragraph2);
-articlesDivContainer.appendChild(paragraph3);
-
-articlesDivContainer.appendChild(spann);
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-  Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
-  This listener should toggle the class 'article-open' on div.article.
-  */
+  let root = document.querySelector('.articles');
 
   
-  /*
-  Step 3: Don't forget to return something from your function!
-  */
-
-  /*
-  Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
-  to create a div.article element and append it to the DOM inside div.articles (see index.html).
-  */
 
 
-  /*
-  Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
-  Refresh the page to see the new article.
-*/
+
+  articleData.forEach((entry, indx) => {
+
+    const articlesDivContainer = document.createElement('div');
+    articlesDivContainer.classList.add('article')
+
+    let articleTitle = document.createElement('h2');
+    // put date code here and add the class
+    let paragraph1 = document.createElement('p');
+    let paragraph2 = document.createElement('p');
+    let paragraph3 = document.createElement('p');
+    let spann = document.createElement('span');
+
+    articleTitle.textContent = articleData[indx].title; 
+    // add text content to date
+    paragraph1.textContent = articleData[indx].firstParagraph;
+    paragraph2.textContent = articleData[indx].secondParagraph
+    paragraph3.textContent = articleData[indx].thirdParagraph;
+    spann.textContent = "+";
+    spann.classList.add('expandButton');
+
+    articlesDivContainer.appendChild(articleTitle);
+    // append date
+    articlesDivContainer.appendChild(paragraph1);
+    articlesDivContainer.appendChild(paragraph2);
+    articlesDivContainer.appendChild(paragraph3);
+    articlesDivContainer.appendChild(spann);
+
+    spann.addEventListener('click', (event) => {
+          articlesDivContainer.classList.toggle('article-open');
+        }); 
+
+    root.appendChild(articlesDivContainer);
+
+
+    
+  }); 
+}; 
+
+
+articleMaker(data);
+
+
+
+
+
+
+
+
